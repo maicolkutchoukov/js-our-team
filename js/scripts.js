@@ -45,11 +45,36 @@ ourTeams.push(createTeamObject('Angela Lopez', 'Social Media Manager', 'angela-l
 ourTeams.push(createTeamObject('Scott Estrada', 'Developer', 'scott-estrada-developer.jpg'));
 ourTeams.push(createTeamObject('Barbara Ramos', 'Graphic Designer', 'barbara-ramos-graphic-designer.jpg'));
 
+const myContainer = document.querySelector('.my-container');
+const row = document.createElement('div');
+row.classList.add('row', 'g-3');
+
+myContainer.append(row);
+
+
+
 for (let i = 0; i < ourTeams.length; i++) {
+    console.log(ourTeams[i])
+    const col = document.createElement('div');
+    col.classList.add('col-4');
+    const card = document.createElement('div');
+    card.classList.add('card', 'text-center');
+    col.append(card);
+    row.append(col);
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('img-fluid');
+    imageContainer.innerHTML = `<img src = "img/${ourTeams[i].image}" alt = "Foto ${i + 1}" class = "card-img-top">`
+    console.log(imageContainer);
+    const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+    cardBody.innerHTML = `
+                        <h5>${ourTeams[i].name}</h5>
+                        <p>${ourTeams[i].role}</p>`
+    card.append(imageContainer);
+    card.append(cardBody);
     console.log('Nome : ' + ourTeams[i].name);
     console.log('Ruolo : ' + ourTeams[i].role);
-    console.log('Immagine : ' + ourTeams[i].image);
-    
+    console.log('Immagine : ' + ourTeams[i].image);    
 }
 
 
